@@ -3,13 +3,15 @@ name := "database_clean"
 version := "0.1"
 
 scalaVersion := "2.13.1"
-lazy val akka_stream = Seq("com.typesafe.akka" %% "akka-stream" % "2.6.1")
-lazy val log4j = Seq(
-  "org.apache.logging.log4j" % "log4j-core" % "2.13.0",
-  "org.apache.logging.log4j" % "log4j-api" % "2.13.0"
+lazy val akka_stream = Seq(
+  "com.typesafe.akka" %% "akka-stream" % "2.6.1",
 )
+lazy val logger = Seq(
+  "org.slf4j" % "slf4j-api" % "2.0.0-alpha1",
+  "ch.qos.logback" % "logback-classic" % "1.3.0-alpha5"
 
-libraryDependencies ++= akka_stream ++ log4j
+)
+libraryDependencies ++= akka_stream ++ logger
 
 //lazy val `tableclean` = (project in file("."))
 //  .enablePlugins(JavaAppPackaging)

@@ -2,10 +2,15 @@ package clean
 
 import java.io.File
 
+import org.slf4j.{Logger, LoggerFactory}
+
+
 object DirFile {
-  final val SUFFIX =List("xml", "java", "yml", "properties","sql")
+  final val SUFFIX = List("xml", "java", "yml", "properties", "sql")
+  final val logger: Logger = LoggerFactory.getLogger(DirFile.getClass)
+
   //  获取任意多个目录下所有文件
-  def getAllSubFiles(files: Array[File], legalSuffix: List[String] = SUFFIX ): Seq[File] = {
+  def getAllSubFiles(files: Array[File], legalSuffix: List[String] = SUFFIX): Seq[File] = {
     files.filter(it => it.isFile && legalFile(it, legalSuffix)) ++
       files.filter(_.isDirectory).flatMap(dir => getAllSubFiles(dir.listFiles, legalSuffix))
   }
